@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student report card</title>
+    <!--CSS-->
+<link rel="stylesheet" href="{% static 'css/style1.css' %}"
+</head>
+
+    <h1>Student Report Card</h1>
+    
+    {% block report %}
+    =============================<br>
+        DELHI PUBLIC SCHOOL<br>
+        ANNUAL REPORT CARD<br>
+    =============================<br>
+    Student Name : {{student_name}}<br>
+    Class : {{class_name}}<br>
+    Roll No : {{roll_number}}<br>
+    Attendance : 
+    {% if attendance >= 90 %}
+    <div style='color : green'>
+    {{attendance}} - Excellent
+    </div>
+    {% elif attendance < 90 and attendance >= 75 %}
+    <div style='color : blue'>
+    {{attendance}} - Good
+    </div>
+    {% else %}
+    <div style='color : red'>
+    {{attendance}} - Warning!!! Poor Attendance
+    </div> 
+    {% endif %}
+    <br>
+    =============================<br>
+        SUBJECT DETAILS<br>
+    =============================
+    <table style="border-collapse: collapse; border: 2px solid black">
+        <tr style="border-collapse: collapse; border: 2px solid black">
+            <th>S.No</th>
+            <th>Subject</th>
+            <th>Marks</th>
+            <th>Grade</th>
+        </tr>
+        {% for sub in subjects %}
+        <tr style="border-collapse: collapse; border: 2px solid black">
+            <td>{{forloop.counter}}</td>
+            <td>{{sub.name}}</td>
+            <td>{{sub.marks}}</td>
+            <td>
+                {% if sub.marks >= 90 %}
+                A+
+                {% elif sub.marks >= 80 %}
+                A
+                {% elif sub.marks >= 70 %}
+                B
+                {% elif sub.marks >= 60 %}
+                C
+                {% elif sub.marks >= 40 %}
+                D
+                {% else %}
+                F
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+
+
+
+
+
+
+
+
+    {% endblock report %}
+</html>
