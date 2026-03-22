@@ -1,0 +1,29 @@
+<h2>Employee List</h2>
+<table border="1">
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Email</th>
+    <th>Action 1</th>
+    <th>Action 2</th>
+</tr>
+{% for emp in employees %}
+<tr>
+    <td>{{ emp.id }}</td>
+    <td>{{ emp.name }}</td>
+    <td>{{ emp.age }}</td>
+    <td>{{ emp.email }}</td>
+    <td>
+        <a href="{% url 'update_employee' emp.id %}">Update</a>
+    </td>
+    <td>
+        <a href="{% url 'delete_employee' emp.id %}">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+
+<a href="{% url 'create_employee' %}">Add Employee</a>
+<!-- http://localhost:8000/employee/employees/ -->
