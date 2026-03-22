@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django Static Demo</title>
+    <!--CSS-->
+<link rel="stylesheet" href="{% static 'css/style.css' %}"
+</head>
+
+<body>
+    <h1>Django Static Files Demo</h1>
+    <!--Dummy image-->
+    <img src="{% static 'images/image.png' %}" alt="dummy image" width="250">
+
+    <!--JS-->
+    <script src="{% static 'js/first.js' %}"></script>
+</body>
+</html>
